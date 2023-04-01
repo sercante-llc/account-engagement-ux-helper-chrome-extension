@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Pardot Replacer",
-    "version": "1.0",
+    "version": "1.0.0",
     "description": "Replace occurrences of 'Account Engagement' with Custom Text",
     "permissions": ["activeTab", "storage"],
     "icons": {
