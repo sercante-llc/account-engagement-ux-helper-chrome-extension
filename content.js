@@ -1,4 +1,7 @@
-var hasPardotReplaced=true;
+// Extension code that runs on top level pages. Separate Javascript is used for handling iframes (Page Layout Editor)
+
+var hasPardotReplaced=true; // makes sure that the iFrame code doesn't run at the top level layer
+
 function replaceLightningTabText(node, replacementText) {
     if (node.nodeType === Node.TEXT_NODE) {
         if (node.textContent.includes("Account Engagement")) {
@@ -54,16 +57,7 @@ chrome.storage.local.get('replacementText', (data) => {
         mutations.forEach((mutation) => {
             if (mutation.addedNodes && mutation.addedNodes.length > 0) {
                 mutation.addedNodes.forEach((node) => {
-                    // if(node.nodeName==='IFRAME') {
-                    //     console.log(node);
-                    //     node.addEventListener("load", function() {
-                    //         myTroughData = node.contentWindow.troughData; //ew, I'm using a "my" attribute
-                    //         console.log('I think I got it?');
-                    //         console.log(myTroughData[0]);
-                    //     });
-                    // }
-                    // else
-                        applyReplacements(replacementText);
+                    applyReplacements(replacementText);
                 });
             }
         });

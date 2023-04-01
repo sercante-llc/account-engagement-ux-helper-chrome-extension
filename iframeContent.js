@@ -1,3 +1,4 @@
+// Extension code that runs in iFrame pages. (Page Layout Editor)
 if(!window.hasPardotReplaced) {
     function hijackTroughData() {
         var script = document.createElement('script');
@@ -80,5 +81,4 @@ if(!window.hasPardotReplaced) {
         });
     }
     setTimeout(hijackTroughData, 500);
-    // callback();
 }
