@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Pardot Replacer",
     "version": "1.0",
-    "description": "Replace occurrences of 'Account Engagement' with 'Pardot'",
+    "description": "Replace occurrences of 'Account Engagement' with Custom Text",
     "permissions": ["activeTab", "storage"],
     "icons": {
         "16": "images/icon-16.png",
@@ -19,12 +19,24 @@
             "128":"images/icon-128.png"
         }
     },
+    "background": {
+      "service_worker": "background.js"
+    },
     "content_scripts": [
       {
         "matches": ["*://*.lightning.force.com/*", "*://*.my.salesforce.com/*"],
         "js": ["content.js"]
+      },
+      {
+        "matches": ["*://*.lightning.force.com/*", "*://*.my.salesforce.com/*"],
+        "js": ["iframeContent.js"],
+        "all_frames": true
       }
     ],
+    "web_accessible_resources":[{
+      "matches": ["*://*.lightning.force.com/*", "*://*.my.salesforce.com/*"],
+      "resources":["iframeInject.js"]
+    }],
     "options_page": "options.html"
   }
   

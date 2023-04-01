@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveButton = document.getElementById('saveButton');
   
     // Load the saved replacement text
-    chrome.storage.sync.get('replacementText', (data) => {
+    chrome.storage.local.get('replacementText', (data) => {
       replacementTextInput.value = data.replacementText || 'Pardot';
     });
   
     // Save the replacement text
     saveButton.addEventListener('click', () => {
-      chrome.storage.sync.set({ replacementText: replacementTextInput.value }, () => {
+      chrome.storage.local.set({ replacementText: replacementTextInput.value }, () => {
         alert('Replacement text saved to ' + replacementTextInput.value);
       });
     });
