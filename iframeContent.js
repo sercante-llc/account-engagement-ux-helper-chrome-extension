@@ -1,6 +1,4 @@
 if(!window.hasPardotReplaced) {
-    // console.log('ok we need to replace in an IFRAME');
-
     function hijackTroughData() {
         var script = document.createElement('script');
         script.setAttribute('type', 'text/javascript');
@@ -27,11 +25,29 @@ if(!window.hasPardotReplaced) {
             span.textContent = newLabel;
         }
     }
+
+    function replaceLayoutFieldName(node, replacementText) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.includes("Account Engagement")) {
+                node.textContent = node.textContent.replace(/Account Engagement/g, replacementText);
+            }
+        } 
+        else {
+            for (let child of node.childNodes) {
+                replaceLayoutFieldName(child, replacementText);
+            }
+        }
+    }
     
     function applyReplacements(replacementText, troughData) {
         const draggableFieldNames = document.querySelectorAll('#troughPanel .troughItems .item');
         draggableFieldNames.forEach((tab) => {
             replaceTroughFieldName(tab, replacementText, troughData);
+        });
+
+        const fieldsInLayout = document.querySelectorAll('.pbBody .itemLabel span.labelText');
+        fieldsInLayout.forEach((field) => {
+            replaceLayoutFieldName(field, replacementText);
         });
     }
 
