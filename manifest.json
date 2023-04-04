@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Pardot Replacer",
+    "name": "Account Engagement UX Helper",
     "version": "1.0.1",
-    "description": "Replace occurrences of 'Account Engagement' with Custom Text",
+    "description": "Replace occurrences of 'Account Engagement' with Custom Text, improving the UX within Salesforce",
     "permissions": ["storage"],
     "icons": {
         "16": "images/icon-16.png",
